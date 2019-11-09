@@ -330,9 +330,113 @@ export default {
               ],
             },
             {
+              name: 'Accounts',
+              icon: 'table',
+              path: '/accounts',
+              component: './accounts/accounts.jsx',
+            },
+            {
               path: '/',
               redirect: '/dashboard/analysis',
               authority: ['admin', 'user'],
+            },
+            {
+              name: 'Inventory',
+              path: '/inventory',
+              icon: 'smile',
+              routes: [
+                {
+                  name: 'Overview',
+                  path: '/inventory/overview',
+                  component: './inventory/overview/overview',
+                  icon: 'smile',
+                },
+                {
+                  name: 'Orders',
+                  path: '/inventory/orders',
+                  component: './inventory/orders/orders',
+                  icon: 'smile',
+                },
+                {
+                  name: 'Stock',
+                  path: '/inventory/stock',
+                  component: './inventory/stock/stock',
+                  icon: 'smile',
+                },
+                {
+                  name: 'Vendors',
+                  path: '/inventory/vendors',
+                  component: './inventory/vendors/vendors',
+                  icon: 'smile',
+                },
+                {
+                  name: 'Categories',
+                  path: '/inventory/categories',
+                  component: './inventory/categories/categories',
+                  icon: 'smile',
+                },
+                {
+                  name: 'Locations',
+                  path: '/inventory/locations',
+                  component: './inventory/locations/locations',
+                  icon: 'smile',
+                },
+              ],
+            },
+            {
+              name: 'Models',
+              icon: 'smile',
+              path: '/product_models',
+              component: './product_models/product_models',
+            },
+            {
+              name: 'Orders',
+              icon: 'smile',
+              path: '/orders',
+              routes: [
+                {
+                  name: 'All',
+                  path: '/orders/all',
+                  component: './orders/all/all',
+                  icon: 'smile',
+                },
+                {
+                  name: 'Ongoing',
+                  path: '/orders/ongoing',
+                  component: './orders/ongoing/ongoing',
+                  icon: 'smile',
+                },
+                {
+                  name: 'New Orders',
+                  path: '/orders/new_orders',
+                  component: './orders/new_orders/new_orders',
+                  icon: 'smile',
+                },
+                {
+                  name: 'Complete',
+                  path: '/orders/complete',
+                  component: './orders/complete/complete',
+                  icon: 'smile',
+                },
+              ],
+            },
+            {
+              name: 'Reports',
+              icon: 'smile',
+              path: '/reports',
+              component: './reports/reports',
+            },
+            {
+              name: 'Roles',
+              icon: 'smile',
+              path: '/roles',
+              component: './roles/roles',
+            },
+            {
+              name: 'Settings',
+              icon: 'smile',
+              path: '/settings',
+              component: './settings/settings',
             },
             {
               component: '404',
