@@ -90,7 +90,7 @@ class Login extends Component {
             this.loginForm = form;
           }}
         >
-          <Tab
+          <div
             key="account"
             tab={formatMessage({
               id: 'userandlogin.login.tab-login-credentials',
@@ -136,89 +136,18 @@ class Login extends Component {
                 this.loginForm.validateFields(this.handleSubmit);
               }}
             />
-          </Tab>
-          <Tab
-            key="mobile"
-            tab={formatMessage({
-              id: 'userandlogin.login.tab-login-mobile',
-            })}
-          >
-            {status === 'error' &&
-              loginType === 'mobile' &&
-              !submitting &&
-              this.renderMessage(
-                formatMessage({
-                  id: 'userandlogin.login.message-invalid-verification-code',
-                }),
-              )}
-            <Mobile
-              name="mobile"
-              placeholder={formatMessage({
-                id: 'userandlogin.phone-number.placeholder',
-              })}
-              rules={[
-                {
-                  required: true,
-                  message: formatMessage({
-                    id: 'userandlogin.phone-number.required',
-                  }),
-                },
-                {
-                  pattern: /^1\d{10}$/,
-                  message: formatMessage({
-                    id: 'userandlogin.phone-number.wrong-format',
-                  }),
-                },
-              ]}
-            />
-            <Captcha
-              name="captcha"
-              placeholder={formatMessage({
-                id: 'userandlogin.verification-code.placeholder',
-              })}
-              countDown={120}
-              onGetCaptcha={this.onGetCaptcha}
-              getCaptchaButtonText={formatMessage({
-                id: 'userandlogin.form.get-captcha',
-              })}
-              getCaptchaSecondText={formatMessage({
-                id: 'userandlogin.captcha.second',
-              })}
-              rules={[
-                {
-                  required: true,
-                  message: formatMessage({
-                    id: 'userandlogin.verification-code.required',
-                  }),
-                },
-              ]}
-            />
-          </Tab>
+          </div>
+          
           <div>
             <Checkbox checked={autoLogin} onChange={this.changeAutoLogin}>
               <FormattedMessage id="userandlogin.login.remember-me" />
             </Checkbox>
-            <a
-              style={{
-                float: 'right',
-              }}
-              href=""
-            >
-              <FormattedMessage id="userandlogin.login.forgot-password" />
-            </a>
+            
           </div>
           <Submit loading={submitting}>
             <FormattedMessage id="userandlogin.login.login" />
           </Submit>
-          <div className={styles.other}>
-            <FormattedMessage id="userandlogin.login.sign-in-with" />
-            <Icon type="alipay-circle" className={styles.icon} theme="outlined" />
-            <Icon type="taobao-circle" className={styles.icon} theme="outlined" />
-            <Icon type="weibo-circle" className={styles.icon} theme="outlined" />
-            <Link className={styles.register} to="/user/register">
-              <FormattedMessage id="userandlogin.login.signup" />
-            </Link>
-          </div>
+          
         </LoginComponents>
       </div>
     );

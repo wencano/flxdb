@@ -1,16 +1,16 @@
 export default {
   navTheme: 'dark',
   primaryColor: '#1890FF',
-  layout: 'sidemenu',
+  layout: 'topmenu',
   contentWidth: 'Fluid',
-  fixedHeader: false,
+  fixedHeader: true,
   autoHideHeader: false,
   fixSiderbar: false,
   colorWeak: false,
   menu: {
     locale: true,
   },
-  title: 'Ant Design Pro',
+  title: 'FLX MS',
   pwa: false,
   iconfontUrl: '',
 };
