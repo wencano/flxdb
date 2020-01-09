@@ -9,17 +9,16 @@ const { RangePicker } = DatePicker;
 const { TabPane } = Tabs;
 const rankingListData = [];
 
-for (let i = 0; i < 7; i += 1) {
+for (let i = 1; i <= 7; i += 1) {
   rankingListData.push({
     title: formatMessage(
-      {
-        id: 'dashboardandanalysis.analysis.test',
+      { id: 'dashboardandanalysis.analysis.test',
       },
       {
         no: i,
       },
     ),
-    total: 323234,
+    total: Math.floor(Math.random() * 100000) + 10000,
   });
 }
 
@@ -83,32 +82,21 @@ const SalesCard = ({
         }}
       >
         <TabPane
-          tab={<FormattedMessage id="dashboardandanalysis.analysis.sales" defaultMessage="Sales" />}
-          key="sales"
+          tab="Orders"
+          key="orders"
         >
           <Row type="flex">
             <Col xl={16} lg={12} md={12} sm={24} xs={24}>
               <div className={styles.salesBar}>
                 <Bar
-                  height={295}
-                  title={
-                    <FormattedMessage
-                      id="dashboardandanalysis.analysis.sales-trend"
-                      defaultMessage="Sales Trend"
-                    />
-                  }
-                  data={salesData}
+                  height={400}
+                  title="Order Trend" data={salesData}
                 />
               </div>
             </Col>
             <Col xl={8} lg={12} md={12} sm={24} xs={24}>
               <div className={styles.salesRank}>
-                <h4 className={styles.rankingTitle}>
-                  <FormattedMessage
-                    id="dashboardandanalysis.analysis.sales-ranking"
-                    defaultMessage="Sales Ranking"
-                  />
-                </h4>
+                <h4 className={styles.rankingTitle}>Model Ranking</h4>
                 <ul className={styles.rankingList}>
                   {rankingListData.map((item, i) => (
                     <li key={item.title}>
@@ -129,34 +117,22 @@ const SalesCard = ({
           </Row>
         </TabPane>
         <TabPane
-          tab={
-            <FormattedMessage id="dashboardandanalysis.analysis.visits" defaultMessage="Visits" />
-          }
+          tab="Units"
           key="views"
         >
           <Row>
             <Col xl={16} lg={12} md={12} sm={24} xs={24}>
               <div className={styles.salesBar}>
                 <Bar
-                  height={292}
-                  title={
-                    <FormattedMessage
-                      id="dashboardandanalysis.analysis.visits-trend"
-                      defaultMessage="Visits Trend"
-                    />
-                  }
+                  height={400}
+                  title="Units Trend"
                   data={salesData}
                 />
               </div>
             </Col>
             <Col xl={8} lg={12} md={12} sm={24} xs={24}>
               <div className={styles.salesRank}>
-                <h4 className={styles.rankingTitle}>
-                  <FormattedMessage
-                    id="dashboardandanalysis.analysis.visits-ranking"
-                    defaultMessage="Visits Ranking"
-                  />
-                </h4>
+                <h4 className={styles.rankingTitle}>Model Ranking</h4>
                 <ul className={styles.rankingList}>
                   {rankingListData.map((item, i) => (
                     <li key={item.title}>

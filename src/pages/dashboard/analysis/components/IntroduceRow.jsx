@@ -20,68 +20,12 @@ const topColResponsiveProps = {
 
 const IntroduceRow = ({ loading, visitData }) => (
   <Row gutter={24} type="flex">
-    <Col {...topColResponsiveProps}>
-      <ChartCard
-        bordered={false}
-        title={
-          <FormattedMessage
-            id="dashboardandanalysis.analysis.total-sales"
-            defaultMessage="Total Sales"
-          />
-        }
-        action={
-          <Tooltip
-            title={
-              <FormattedMessage
-                id="dashboardandanalysis.analysis.introduce"
-                defaultMessage="Introduce"
-              />
-            }
-          >
-            <Icon type="info-circle-o" />
-          </Tooltip>
-        }
-        loading={loading}
-        total={() => <Yuan>126560</Yuan>}
-        footer={
-          <Field
-            label={
-              <FormattedMessage
-                id="dashboardandanalysis.analysis.day-sales"
-                defaultMessage="Daily Sales"
-              />
-            }
-            value={`￥${numeral(12423).format('0,0')}`}
-          />
-        }
-        contentHeight={46}
-      >
-        <Trend
-          flag="up"
-          style={{
-            marginRight: 16,
-          }}
-        >
-          <FormattedMessage
-            id="dashboardandanalysis.analysis.week"
-            defaultMessage="Weekly Changes"
-          />
-          <span className={styles.trendText}>12%</span>
-        </Trend>
-        <Trend flag="down">
-          <FormattedMessage id="dashboardandanalysis.analysis.day" defaultMessage="Daily Changes" />
-          <span className={styles.trendText}>11%</span>
-        </Trend>
-      </ChartCard>
-    </Col>
-
+    
     <Col {...topColResponsiveProps}>
       <ChartCard
         bordered={false}
         loading={loading}
-        title={
-          <FormattedMessage id="dashboardandanalysis.analysis.visits" defaultMessage="Visits" />
-        }
+        title={"New Orders"}
         action={
           <Tooltip
             title={
@@ -97,12 +41,7 @@ const IntroduceRow = ({ loading, visitData }) => (
         total={numeral(8846).format('0,0')}
         footer={
           <Field
-            label={
-              <FormattedMessage
-                id="dashboardandanalysis.analysis.day-visits"
-                defaultMessage="Daily Visits"
-              />
-            }
+            label={ "Monthly Average "}
             value={numeral(1234).format('0,0')}
           />
         }
@@ -115,9 +54,7 @@ const IntroduceRow = ({ loading, visitData }) => (
       <ChartCard
         bordered={false}
         loading={loading}
-        title={
-          <FormattedMessage id="dashboardandanalysis.analysis.payments" defaultMessage="Payments" />
-        }
+        title={"WIP Orders"}
         action={
           <Tooltip
             title={
@@ -133,12 +70,7 @@ const IntroduceRow = ({ loading, visitData }) => (
         total={numeral(6560).format('0,0')}
         footer={
           <Field
-            label={
-              <FormattedMessage
-                id="dashboardandanalysis.analysis.conversion-rate"
-                defaultMessage="Conversion Rate"
-              />
-            }
+            label={ "Overall Progress"}
             value="60%"
           />
         }
@@ -151,12 +83,7 @@ const IntroduceRow = ({ loading, visitData }) => (
       <ChartCard
         loading={loading}
         bordered={false}
-        title={
-          <FormattedMessage
-            id="dashboardandanalysis.analysis.operational-effect"
-            defaultMessage="Operational Effect"
-          />
-        }
+        title={ "Orders QTD" }
         action={
           <Tooltip
             title={
@@ -169,7 +96,7 @@ const IntroduceRow = ({ loading, visitData }) => (
             <Icon type="info-circle-o" />
           </Tooltip>
         }
-        total="78%"
+        total="15,281"
         footer={
           <div
             style={{
@@ -182,18 +109,55 @@ const IntroduceRow = ({ loading, visitData }) => (
               style={{
                 marginRight: 16,
               }}
-            >
-              <FormattedMessage
-                id="dashboardandanalysis.analysis.week"
-                defaultMessage="Weekly Changes"
-              />
+            >Q4 Change
               <span className={styles.trendText}>12%</span>
             </Trend>
             <Trend flag="down">
+              Q1 2019
+              <span className={styles.trendText}>11%</span>
+            </Trend>
+          </div>
+        }
+        contentHeight={46}
+      >
+        <MiniProgress percent={78} strokeWidth={8} target={80} color="#13C2C2" />
+      </ChartCard>
+    </Col>
+    <Col {...topColResponsiveProps}>
+      <ChartCard
+        loading={loading}
+        bordered={false}
+        title={ "Orders QTD" }
+        action={
+          <Tooltip
+            title={
               <FormattedMessage
-                id="dashboardandanalysis.analysis.day"
-                defaultMessage="Weekly Changes"
+                id="dashboardandanalysis.analysis.introduce"
+                defaultMessage="Introduce"
               />
+            }
+          >
+            <Icon type="info-circle-o" />
+          </Tooltip>
+        }
+        total="15,200"
+        footer={
+          <div
+            style={{
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+            }}
+          >
+            <Trend
+              flag="up"
+              style={{
+                marginRight: 16,
+              }}
+            >Q4 Change
+              <span className={styles.trendText}>12%</span>
+            </Trend>
+            <Trend flag="down">
+              Q1 2019
               <span className={styles.trendText}>11%</span>
             </Trend>
           </div>

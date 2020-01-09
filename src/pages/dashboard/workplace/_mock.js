@@ -23,9 +23,9 @@ for (let i = 0; i < fakeY2.length; i += 1) {
 
 const salesData = [];
 
-for (let i = 0; i < 12; i += 1) {
+for (let i = 1; i <= 12; i += 1) {
   salesData.push({
-    x: `${i + 1}月`,
+    x: moment(i+'/1/2020').format('MMM'),
     y: Math.floor(Math.random() * 1000) + 200,
   });
 }
