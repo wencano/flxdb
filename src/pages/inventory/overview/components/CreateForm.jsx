@@ -17,7 +17,7 @@ const CreateForm = props => {
   return (
     <Modal
       destroyOnClose
-      title="New Account"
+      title="New Part"
       visible={modalVisible}
       width={700}
       onOk={okHandle}
@@ -31,7 +31,7 @@ const CreateForm = props => {
         wrapperCol={{
           span: 5,
         }}
-        label="Photo"
+        label="Photos"
       >
         {form.getFieldDecorator('Photo', {
           rules: [
@@ -51,9 +51,9 @@ const CreateForm = props => {
         wrapperCol={{
           span: 7,
         }}
-        label="Employee ID"
+        label="Part Name"
       >
-        {form.getFieldDecorator('EmployeeID', {
+        {form.getFieldDecorator('PartName', {
           rules: [
             {
               required: true,
@@ -61,7 +61,7 @@ const CreateForm = props => {
               min: 1,
             },
           ],
-        })(<Input placeholder="111-111-101" />)}
+        })(<Input placeholder="C-0001" />)}
       </FormItem>
 
       <FormItem
@@ -94,9 +94,9 @@ const CreateForm = props => {
         wrapperCol={{
           span: 7,
         }}
-        label="First Name"
+        label="Quantity"
       >
-        {form.getFieldDecorator('FirstName', {
+        {form.getFieldDecorator('Quantity', {
           rules: [
             {
               required: true,
@@ -104,7 +104,7 @@ const CreateForm = props => {
               min: 1,
             },
           ],
-        })(<Input placeholder="Abigail" />)}
+        })(<Input placeholder="100" />)}
       </FormItem>
 
       <FormItem
@@ -114,9 +114,9 @@ const CreateForm = props => {
         wrapperCol={{
           span: 7,
         }}
-        label="Last Name"
+        label="Max"
       >
-        {form.getFieldDecorator('LastName', {
+        {form.getFieldDecorator('Max', {
           rules: [
             {
               required: true,
@@ -124,7 +124,7 @@ const CreateForm = props => {
               min: 1,
             },
           ],
-        })(<Input placeholder="Fernandez" />)}
+        })(<Input placeholder="100" />)}
       </FormItem>
 
       <FormItem
@@ -134,9 +134,9 @@ const CreateForm = props => {
         wrapperCol={{
           span: 15,
         }}
-        label="Email Address"
+        label="Documents"
       >
-        {form.getFieldDecorator('EmailAddress', {
+        {form.getFieldDecorator('Documents', {
           rules: [
             {
               required: true,
@@ -144,69 +144,7 @@ const CreateForm = props => {
               min: 1,
             },
           ],
-        })(<Input placeholder="apfernandez2@up.edu.ph" />)}
-      </FormItem>
-
-      <FormItem
-        labelCol={{
-          span: 5,
-        }}
-        wrapperCol={{
-          span: 15,
-        }}
-        label="Phone Number"
-      >
-        {form.getFieldDecorator('PhoneNumber', {
-          rules: [
-            {
-              required: true,
-              message: 'This field is required.',
-              min: 1,
-            },
-          ],
-        })(<Input placeholder="+63 916 123 9563" />)}
-      </FormItem>
-
-      <FormItem
-        labelCol={{
-          span: 5,
-        }}
-        wrapperCol={{
-          span: 15,
-        }}
-        label="Address"
-      >
-        {form.getFieldDecorator('Address', {
-          rules: [
-            {
-              required: true,
-              message: 'This field is required.',
-              min: 1,
-            },
-          ],
-        })(<Input placeholder="Brgy. Tadlac" />)}
-      </FormItem>
-
-      <FormItem
-        labelCol={{
-          span: 5,
-        }}
-        wrapperCol={{
-          span: 10,
-        }}
-        label="City/Province"
-      >
-        {form.getFieldDecorator('CityProvince', {
-          rules: [
-            {
-              required: true,
-              message: 'This field is required.',
-              min: 1,
-            },
-          ],
-        })(<select placeholder="Enter City/Province">
-            <option>Los Banos, Laguna</option>
-            </select>)}
+        })(<Input />)}
       </FormItem>
     </Modal>
   );

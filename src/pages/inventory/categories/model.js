@@ -1,39 +1,29 @@
 import { addRule, queryRule, removeRule, updateRule } from './service';
 
 const Model = {
-  namespace: 'listAndtableList1',
+  namespace: 'listcategories',
   state: {
     data: {
       list: [
         {
-          EmployeeID: '111-111-101',
-          FullName: 'Abigail Fernandez',
-          Status: 'Active',
-          DateAdded: '01/13/2020',
+          Name: 'Product Name Here',
+          TotalProducts: '10',
         },
         {
-          EmployeeID: '111-111-102',
-          FullName: 'Abigail Fernandez',
-          Status: 'Active',
-          DateAdded: '01/13/2020',
+          Name: 'Product Name Here',
+          TotalProducts: '10',
         },
         {
-          EmployeeID: '111-111-103',
-          FullName: 'Abigail Fernandez',
-          Status: 'Active',
-          DateAdded: '01/13/2020',
+          Name: 'Product Name Here',
+          TotalProducts: '10',
         },
         {
-          EmployeeID: '111-111-104',
-          FullName: 'Abigail Fernandez',
-          Status: 'Active',
-          DateAdded: '01/13/2020',
+          Name: 'Product Name Here',
+          TotalProducts: '10',
         },
         {
-          EmployeeID: '111-111-105',
-          FullName: 'Abigail Fernandez',
-          Status: 'Active',
-          DateAdded: '01/13/2020',
+          Name: 'Product Name Here',
+          TotalProducts: '10',
         },
       ],
       pagination: {},

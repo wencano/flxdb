@@ -17,9 +17,9 @@ const getValue = obj =>
     .join(',');
 
 /* eslint react/no-multi-comp:0 */
-@connect(({ listAndtableList1, loading }) => ({
-  listAndtableList1,
-  loading: loading.models.listAndtableList1,
+@connect(({ listoverview, loading }) => ({
+  listoverview,
+  loading: loading.models.listoverview,
 }))
 class TableList extends Component {
   state = {
@@ -32,20 +32,32 @@ class TableList extends Component {
 
   columns = [
     {
-      title: 'Employee ID',
-      dataIndex: 'EmployeeID',
+      title: 'Image',
+      dataIndex: 'Image',
     },
     {
-      title: 'Full Name',
-      dataIndex: 'FullName',
+      title: 'Part ID',
+      dataIndex: 'PartID',
     },
     {
-      title: 'Status',
-      dataIndex: 'Status',
+      title: 'Quantity',
+      dataIndex: 'Quantity',
+    },
+    {
+      title: 'Max',
+      dataIndex: 'Max',
+    },
+    {
+      title: 'Percent',
+      dataIndex: 'Percent',
     },
     {
       title: 'Date Added',
       dataIndex: 'DateAdded',
+    },
+    {
+      title: 'Date Updated',
+      dataIndex: 'DateUpdated',
     },
   ];
 
@@ -71,7 +83,7 @@ class TableList extends Component {
     }
 
     dispatch({
-      type: 'listAndtableList1/fetch',
+      type: 'listoverview/fetch',
       payload: params,
     });
   };
@@ -83,7 +95,7 @@ class TableList extends Component {
       formValues: {},
     });
     dispatch({
-      type: 'listAndtableList1/fetch',
+      type: 'listoverview/fetch',
       payload: {},
     });
   };
@@ -96,7 +108,7 @@ class TableList extends Component {
     switch (e.key) {
       case 'remove':
         dispatch({
-          type: 'listAndtableList1/remove',
+          type: 'listoverview/remove',
           payload: {
             key: selectedRows.map(row => row.key),
           },
@@ -132,7 +144,7 @@ class TableList extends Component {
         formValues: values,
       });
       dispatch({
-        type: 'listAndtableList1/fetch',
+        type: 'listoverview/fetch',
         payload: values,
       });
     });
@@ -154,7 +166,7 @@ class TableList extends Component {
   handleAdd = fields => {
     const { dispatch } = this.props;
     dispatch({
-      type: 'listAndtableList1/add',
+      type: 'listoverview/add',
       payload: {
         FirstName: fields.FirstName,
         LastName: fields.LastName,
@@ -169,7 +181,7 @@ class TableList extends Component {
   handleUpdate = fields => {
     const { dispatch } = this.props;
     dispatch({
-      type: 'listAndtableList1/update',
+      type: 'listoverview/update',
       payload: {
         FirstName: fields.FirstName,
         LastName: fields.LastName,
@@ -202,7 +214,7 @@ class TableList extends Component {
         >
           <Col md={8} sm={15}>
             <FormItem label="Search">
-              {getFieldDecorator('FullName')(<Input placeholder="Employee ID or Name" />)}
+              {getFieldDecorator('PartID')(<Input placeholder="Part Name" />)}
             </FormItem>
           </Col>
 
@@ -239,7 +251,7 @@ class TableList extends Component {
 
   render() {
     const {
-      listAndtableList1: { data },
+      listoverview: { data },
       loading,
     } = this.props;
     const { selectedRows, modalVisible, updateModalVisible, stepFormValues } = this.state;
@@ -265,7 +277,7 @@ class TableList extends Component {
             <div className={styles.tableListForm}>{this.renderSimpleForm()}</div>
             <div className={styles.tableListOperator}>
               <Button icon="plus" type="primary" onClick={() => this.handleModalVisible(true)}>
-                New Account
+                New Part
               </Button>
               {selectedRows.length > 0 && (
                 <span>

@@ -17,82 +17,17 @@ const CreateForm = props => {
   return (
     <Modal
       destroyOnClose
-      title="New Account"
+      title="New Vendor"
       visible={modalVisible}
-      width={700}
       onOk={okHandle}
       onCancel={() => handleModalVisible()}
     >
-
       <FormItem
         labelCol={{
-          span: 5,
-        }}
-        wrapperCol={{
-          span: 5,
-        }}
-        label="Photo"
-      >
-        {form.getFieldDecorator('Photo', {
-          rules: [
-            {
-              required: true,
-              message: 'This field is required.',
-              min: 1,
-            },
-          ],
-        })(<Input/>)}
-      </FormItem>
-
-      <FormItem
-        labelCol={{
-          span: 5,
-        }}
-        wrapperCol={{
           span: 7,
         }}
-        label="Employee ID"
-      >
-        {form.getFieldDecorator('EmployeeID', {
-          rules: [
-            {
-              required: true,
-              message: 'This field is required.',
-              min: 1,
-            },
-          ],
-        })(<Input placeholder="111-111-101" />)}
-      </FormItem>
-
-      <FormItem
-        labelCol={{
-          span: 5,
-        }}
         wrapperCol={{
-          span: 7,
-        }}
-        label="Status"
-      >
-        {form.getFieldDecorator('Status', {
-          rules: [
-            {
-              required: true,
-              message: 'This field is required.',
-              min: 1,
-            },
-          ],
-        })(<select placeholder="Enter Status">
-            <option>ACTIVE</option>
-            <option>INACTIVE</option>
-            </select>)}
-      </FormItem>
-
-      <FormItem
-        labelCol={{
-          span: 5,
-        }}
-        wrapperCol={{
-          span: 7,
+          span: 15,
         }}
         label="First Name"
       >
@@ -104,15 +39,15 @@ const CreateForm = props => {
               min: 1,
             },
           ],
-        })(<Input placeholder="Abigail" />)}
+        })(<Input placeholder="Enter First Name" />)}
       </FormItem>
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
-          span: 7,
+          span: 15,
         }}
         label="Last Name"
       >
@@ -124,12 +59,12 @@ const CreateForm = props => {
               min: 1,
             },
           ],
-        })(<Input placeholder="Fernandez" />)}
+        })(<Input placeholder="Enter Last Name" />)}
       </FormItem>
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
           span: 15,
@@ -144,12 +79,12 @@ const CreateForm = props => {
               min: 1,
             },
           ],
-        })(<Input placeholder="apfernandez2@up.edu.ph" />)}
+        })(<Input placeholder="Enter Email Address" />)}
       </FormItem>
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
           span: 15,
@@ -164,19 +99,19 @@ const CreateForm = props => {
               min: 1,
             },
           ],
-        })(<Input placeholder="+63 916 123 9563" />)}
+        })(<Input placeholder="Enter Phone Number" />)}
       </FormItem>
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
           span: 15,
         }}
-        label="Address"
+        label="Company Name"
       >
-        {form.getFieldDecorator('Address', {
+        {form.getFieldDecorator('CompanyName', {
           rules: [
             {
               required: true,
@@ -184,19 +119,19 @@ const CreateForm = props => {
               min: 1,
             },
           ],
-        })(<Input placeholder="Brgy. Tadlac" />)}
+        })(<Input placeholder="Enter Company Name" />)}
       </FormItem>
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
-          span: 10,
+          span: 15,
         }}
-        label="City/Province"
+        label="Company Address"
       >
-        {form.getFieldDecorator('CityProvince', {
+        {form.getFieldDecorator('CompanyAddress', {
           rules: [
             {
               required: true,
@@ -204,9 +139,7 @@ const CreateForm = props => {
               min: 1,
             },
           ],
-        })(<select placeholder="Enter City/Province">
-            <option>Los Banos, Laguna</option>
-            </select>)}
+        })(<Input placeholder="Enter Company Address" />)}
       </FormItem>
     </Modal>
   );

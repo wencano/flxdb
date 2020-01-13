@@ -17,9 +17,9 @@ const getValue = obj =>
     .join(',');
 
 /* eslint react/no-multi-comp:0 */
-@connect(({ listAndtableList1, loading }) => ({
-  listAndtableList1,
-  loading: loading.models.listAndtableList1,
+@connect(({ listvendors, loading }) => ({
+  listvendors,
+  loading: loading.models.listvendors,
 }))
 class TableList extends Component {
   state = {
@@ -32,20 +32,28 @@ class TableList extends Component {
 
   columns = [
     {
-      title: 'Employee ID',
-      dataIndex: 'EmployeeID',
+      title: 'First Name',
+      dataIndex: 'FirstName',
     },
     {
-      title: 'Full Name',
-      dataIndex: 'FullName',
+      title: 'Last Name',
+      dataIndex: 'LastName',
     },
     {
-      title: 'Status',
-      dataIndex: 'Status',
+      title: 'Email Address',
+      dataIndex: 'EmailAddress',
     },
     {
-      title: 'Date Added',
-      dataIndex: 'DateAdded',
+      title: 'Phone Number',
+      dataIndex: 'PhoneNumber',
+    },
+    {
+      title: 'Company Name',
+      dataIndex: 'CompanyName',
+    },
+    {
+      title: 'Company Address',
+      dataIndex: 'CompanyAddress',
     },
   ];
 
@@ -71,7 +79,7 @@ class TableList extends Component {
     }
 
     dispatch({
-      type: 'listAndtableList1/fetch',
+      type: 'listvendors/fetch',
       payload: params,
     });
   };
@@ -83,7 +91,7 @@ class TableList extends Component {
       formValues: {},
     });
     dispatch({
-      type: 'listAndtableList1/fetch',
+      type: 'listvendors/fetch',
       payload: {},
     });
   };
@@ -96,7 +104,7 @@ class TableList extends Component {
     switch (e.key) {
       case 'remove':
         dispatch({
-          type: 'listAndtableList1/remove',
+          type: 'listvendors/remove',
           payload: {
             key: selectedRows.map(row => row.key),
           },
@@ -132,7 +140,7 @@ class TableList extends Component {
         formValues: values,
       });
       dispatch({
-        type: 'listAndtableList1/fetch',
+        type: 'listvendors/fetch',
         payload: values,
       });
     });
@@ -154,7 +162,7 @@ class TableList extends Component {
   handleAdd = fields => {
     const { dispatch } = this.props;
     dispatch({
-      type: 'listAndtableList1/add',
+      type: 'listvendors/add',
       payload: {
         FirstName: fields.FirstName,
         LastName: fields.LastName,
@@ -169,7 +177,7 @@ class TableList extends Component {
   handleUpdate = fields => {
     const { dispatch } = this.props;
     dispatch({
-      type: 'listAndtableList1/update',
+      type: 'listvendors/update',
       payload: {
         FirstName: fields.FirstName,
         LastName: fields.LastName,
@@ -184,13 +192,6 @@ class TableList extends Component {
   renderSimpleForm() {
     const { form } = this.props;
     const { getFieldDecorator } = form;
-    const status = (
-      <Menu selectedKeys={[]}>
-        <Menu.Item>Status 1</Menu.Item>
-        <Menu.Item>Status 2</Menu.Item>
-        <Menu.Item>Status 3</Menu.Item>
-      </Menu>
-    );
     return (
       <Form onSubmit={this.handleSearch} layout="inline">
         <Row
@@ -200,23 +201,16 @@ class TableList extends Component {
             xl: 48,
           }}
         >
-          <Col md={8} sm={15}>
-            <FormItem label="Search">
-              {getFieldDecorator('FullName')(<Input placeholder="Employee ID or Name" />)}
+          <Col md={8} sm={24}>
+            <FormItem label="First Name">
+              {getFieldDecorator('FirstName')(<Input placeholder="First Name" />)}
             </FormItem>
           </Col>
-
-          <Col md={8} sm={15}>
-            <FormItem>
-            {getFieldDecorator('Status')(
-                <Dropdown overlay={status}>
-                  <Button>
-                    Status <Icon type="down" />
-                  </Button>
-                </Dropdown>)}
+          <Col md={8} sm={24}>
+            <FormItem label="Last Name">
+              {getFieldDecorator('LastName')(<Input placeholder="Last Name" />)}
             </FormItem>
           </Col>
-
           <Col md={8} sm={24}>
             <span className={styles.submitButtons}>
               <Button type="primary" htmlType="submit">
@@ -239,7 +233,7 @@ class TableList extends Component {
 
   render() {
     const {
-      listAndtableList1: { data },
+      listvendors: { data },
       loading,
     } = this.props;
     const { selectedRows, modalVisible, updateModalVisible, stepFormValues } = this.state;
@@ -249,7 +243,6 @@ class TableList extends Component {
         <Menu.Item key="approval">Batch Approval</Menu.Item>
       </Menu>
     );
-
     const parentMethods = {
       handleAdd: this.handleAdd,
       handleModalVisible: this.handleModalVisible,
@@ -265,7 +258,7 @@ class TableList extends Component {
             <div className={styles.tableListForm}>{this.renderSimpleForm()}</div>
             <div className={styles.tableListOperator}>
               <Button icon="plus" type="primary" onClick={() => this.handleModalVisible(true)}>
-                New Account
+                New Vendor
               </Button>
               {selectedRows.length > 0 && (
                 <span>
