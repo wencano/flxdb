@@ -120,6 +120,8 @@ export default {
               path: '/dashboard',
               name: 'dashboard',
               icon: 'dashboard',
+              component: './dashboard/analysis'
+              /** 
               routes: [
                 {
                   name: 'analysis',
@@ -139,7 +141,7 @@ export default {
                   path: '/dashboard/workplace',
                   component: './dashboard/workplace',
                 },
-              ],
+              ], */
             },
             {
               name: 'Orders',
@@ -262,7 +264,7 @@ export default {
             },
             {
               path: '/',
-              redirect: '/dashboard/analysis',
+              redirect: '/dashboard',
               authority: ['admin', 'user'],
             },
             /** {

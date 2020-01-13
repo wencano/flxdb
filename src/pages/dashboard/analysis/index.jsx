@@ -9,7 +9,7 @@ import styles from './style.less';
 const IntroduceRow = React.lazy(() => import('./components/IntroduceRow'));
 const SalesCard = React.lazy(() => import('./components/SalesCard'));
 const TopSearch = React.lazy(() => import('./components/TopSearch'));
-const ProportionSales = React.lazy(() => import('./components/ProportionSales'));
+const WIPModule = React.lazy(() => import('./components/WIPModule.jsx'));
 const OfflineData = React.lazy(() => import('./components/OfflineData'));
 
 @connect(({ dashboardAndanalysis, loading }) => ({
@@ -156,7 +156,7 @@ class Analysis extends Component {
           >
             <Col xl={12} lg={24} md={24} sm={24} xs={24}>
               <Suspense fallback={null}>
-                <TopSearch
+                <WIPModule
                   loading={loading}
                   visitData2={visitData2}
                   searchData={searchData}
@@ -166,15 +166,15 @@ class Analysis extends Component {
             </Col>
             <Col xl={12} lg={24} md={24} sm={24} xs={24}>
               <Suspense fallback={null}>
-                <ProportionSales
-                  dropdownGroup={dropdownGroup}
-                  salesType={salesType}
+                <TopSearch
                   loading={loading}
-                  salesPieData={salesPieData}
-                  handleChangeSalesType={this.handleChangeSalesType}
+                  visitData2={visitData2}
+                  searchData={searchData}
+                  dropdownGroup={dropdownGroup}
                 />
               </Suspense>
             </Col>
+            
           </Row>
           
         </React.Fragment>

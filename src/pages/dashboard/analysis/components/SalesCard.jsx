@@ -90,7 +90,7 @@ const SalesCard = ({
               <div className={styles.salesBar}>
                 <Bar
                   height={400}
-                  title="Order Trend" data={salesData}
+                  title="2020 Summary" data={salesData}
                 />
               </div>
             </Col>
@@ -125,7 +125,7 @@ const SalesCard = ({
               <div className={styles.salesBar}>
                 <Bar
                   height={400}
-                  title="Units Trend"
+                  title="2020 Summary"
                   data={salesData}
                 />
               </div>
