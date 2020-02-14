@@ -235,7 +235,6 @@ export default {
                   component: './product_models/processes/list.js',
                 }
               ]
-              
             },
             {
               name: 'Reports',
@@ -252,7 +251,7 @@ export default {
                   name: "Users",
                   icon: "user",
                   path: "/accounts",
-                  component: './accounts/accounts.jsx'
+                  component: './accounts/accounts.jsx',
                 },
                 {
                   name: 'Roles and Permissions',
@@ -365,98 +364,98 @@ export default {
                 },
               ],
             },
-            {
-              name: 'result',
-              icon: 'check-circle-o',
-              path: '/result',
-              routes: [
-                {
-                  name: 'success',
-                  icon: 'smile',
-                  path: '/result/success',
-                  component: './result/success',
-                },
-                {
-                  name: 'fail',
-                  icon: 'smile',
-                  path: '/result/fail',
-                  component: './result/fail',
-                },
-              ],
-            },
-            {
-              name: 'exception',
-              icon: 'warning',
-              path: '/exception',
-              routes: [
-                {
-                  name: '403',
-                  icon: 'smile',
-                  path: '/exception/403',
-                  component: './exception/403',
-                },
-                {
-                  name: '404',
-                  icon: 'smile',
-                  path: '/exception/404',
-                  component: './exception/404',
-                },
-                {
-                  name: '500',
-                  icon: 'smile',
-                  path: '/exception/500',
-                  component: './exception/500',
-                },
-              ],
-            },
-            {
-              name: 'account',
-              icon: 'user',
-              path: '/account',
-              routes: [
-                {
-                  name: 'center',
-                  icon: 'smile',
-                  path: '/account/center',
-                  component: './account/center',
-                },
-                {
-                  name: 'settings',
-                  icon: 'smile',
-                  path: '/account/settings',
-                  component: './account/settings',
-                },
-              ],
-            },
-            {
-              name: 'editor',
-              icon: 'highlight',
-              path: '/editor',
-              routes: [
-                {
-                  name: 'flow',
-                  icon: 'smile',
-                  path: '/editor/flow',
-                  component: './editor/flow',
-                },
-                {
-                  name: 'mind',
-                  icon: 'smile',
-                  path: '/editor/mind',
-                  component: './editor/mind',
-                },
-                {
-                  name: 'koni',
-                  icon: 'smile',
-                  path: '/editor/koni',
-                  component: './editor/koni',
-                },
-              ],
-            },
+            // {
+            //   name: 'result',
+            //   icon: 'check-circle-o',
+            //   path: '/result',
+            //   routes: [
+            //     {
+            //       name: 'success',
+            //       icon: 'smile',
+            //       path: '/result/success',
+            //       component: './result/success',
+            //     },
+            //     {
+            //       name: 'fail',
+            //       icon: 'smile',
+            //       path: '/result/fail',
+            //       component: './result/fail',
+            //     },
+            //   ],
+            // },
+            // {
+            //   name: 'exception',
+            //   icon: 'warning',
+            //   path: '/exception',
+            //   routes: [
+            //     {
+            //       name: '403',
+            //       icon: 'smile',
+            //       path: '/exception/403',
+            //       component: './exception/403',
+            //     },
+            //     {
+            //       name: '404',
+            //       icon: 'smile',
+            //       path: '/exception/404',
+            //       component: './exception/404',
+            //     },
+            //     {
+            //       name: '500',
+            //       icon: 'smile',
+            //       path: '/exception/500',
+            //       component: './exception/500',
+            //     },
+            //   ],
+            // },
+            // {
+            //   name: 'account',
+            //   icon: 'user',
+            //   path: '/account',
+            //   routes: [
+            //     {
+            //       name: 'center',
+            //       icon: 'smile',
+            //       path: '/account/center',
+            //       component: './account/center',
+            //     },
+            //     {
+            //       name: 'settings',
+            //       icon: 'smile',
+            //       path: '/account/settings',
+            //       component: './account/settings',
+            //     },
+            //   ],
+            // },
+            // {
+            //   name: 'editor',
+            //   icon: 'highlight',
+            //   path: '/editor',
+            //   routes: [
+            //     {
+            //       name: 'flow',
+            //       icon: 'smile',
+            //       path: '/editor/flow',
+            //       component: './editor/flow',
+            //     },
+            //     {
+            //       name: 'mind',
+            //       icon: 'smile',
+            //       path: '/editor/mind',
+            //       component: './editor/mind',
+            //     },
+            //     {
+            //       name: 'koni',
+            //       icon: 'smile',
+            //       path: '/editor/koni',
+            //       component: './editor/koni',
+            //     },
+            //   ],
+            // },
             
-            {
-              component: '404',
-            },
+            // {
+            //   component: '404',
+            // },
           ],
         },
       ],

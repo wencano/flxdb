@@ -6,7 +6,7 @@ const Model = {
     data: {
       list: [
         {
-          Image: '',
+          Image: 'Photo Here',
           PartID: 'C-0001',
           Quantity: '100',
           Max: '100',
@@ -15,7 +15,7 @@ const Model = {
           DateUpdated: '01/20/2020',
         },
         {
-          Image: '',
+          Image: 'Photo Here',
           PartID: 'C-0002',
           Quantity: '3',
           Max: '100',

@@ -114,7 +114,7 @@ class StandardTable extends Component {
                     key={item.dataIndex}
                   >
                     {item.title}
-                    总计&nbsp;
+                    &nbsp;
                     <span
                       style={{
                         fontWeight: 600,

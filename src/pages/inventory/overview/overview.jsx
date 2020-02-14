@@ -1,4 +1,4 @@
-import { Button, Card, Col, Dropdown, Form, Icon, Input, Menu, Row, Select, message } from 'antd';
+import { Button, Card, Col, Dropdown, Form, Icon, Input, Tag, Menu, Row, Select, message } from 'antd';
 import React, { Component, Fragment } from 'react';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import { connect } from 'dva';
@@ -33,11 +33,20 @@ class TableList extends Component {
   columns = [
     {
       title: 'Image',
+      key: "Image",
       dataIndex: 'Image',
+      render: Image => (
+        <span>
+            <Tag color={'geekblue'}>
+              {Image}
+            </Tag>
+        </span>
+      )
     },
     {
       title: 'Part ID',
       dataIndex: 'PartID',
+      render: text => <a href="../profile/basic">{text}</a>
     },
     {
       title: 'Quantity',
@@ -198,9 +207,9 @@ class TableList extends Component {
     const { getFieldDecorator } = form;
     const status = (
       <Menu selectedKeys={[]}>
-        <Menu.Item>Status 1</Menu.Item>
-        <Menu.Item>Status 2</Menu.Item>
-        <Menu.Item>Status 3</Menu.Item>
+        <Menu.Item>-Select Status-</Menu.Item>
+        <Menu.Item>Active</Menu.Item>
+        <Menu.Item>Inactive</Menu.Item>
       </Menu>
     );
     return (
@@ -212,13 +221,13 @@ class TableList extends Component {
             xl: 48,
           }}
         >
-          <Col md={8} sm={15}>
+          <Col md={7} sm={12}>
             <FormItem label="Search">
               {getFieldDecorator('PartID')(<Input placeholder="Part Name" />)}
             </FormItem>
           </Col>
 
-          <Col md={8} sm={15}>
+          <Col md={6} sm={5}>
             <FormItem>
             {getFieldDecorator('Status')(
                 <Dropdown overlay={status}>
@@ -229,7 +238,7 @@ class TableList extends Component {
             </FormItem>
           </Col>
 
-          <Col md={8} sm={24}>
+          <Col md={8} sm={15}>
             <span className={styles.submitButtons}>
               <Button type="primary" htmlType="submit">
                 Search

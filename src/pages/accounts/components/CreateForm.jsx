@@ -1,4 +1,4 @@
-import { Form, Input, Modal } from 'antd';
+import { Form, Input, Modal, Dropdown, Button, Menu, Icon } from 'antd';
 import React from 'react';
 
 const FormItem = Form.Item;
@@ -19,17 +19,17 @@ const CreateForm = props => {
       destroyOnClose
       title="New Account"
       visible={modalVisible}
-      width={700}
+      width={500}
       onOk={okHandle}
       onCancel={() => handleModalVisible()}
     >
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
-          span: 5,
+          span: 7,
         }}
         label="Photo"
       >
@@ -46,10 +46,10 @@ const CreateForm = props => {
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
-          span: 7,
+          span: 10,
         }}
         label="Employee ID"
       >
@@ -66,10 +66,10 @@ const CreateForm = props => {
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
-          span: 7,
+          span: 10,
         }}
         label="Status"
       >
@@ -81,18 +81,24 @@ const CreateForm = props => {
               min: 1,
             },
           ],
-        })(<select placeholder="Enter Status">
-            <option>ACTIVE</option>
-            <option>INACTIVE</option>
-            </select>)}
+        })(<Dropdown overlay={<Menu>
+          <Menu.Item>-Select Status-</Menu.Item>
+          <Menu.Item>Active</Menu.Item>
+          <Menu.Item>Inactive</Menu.Item>
+        </Menu>}>
+            <Button>
+              Status <Icon type="down" />
+            </Button>
+          </Dropdown>)}
       </FormItem>
+
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
-          span: 7,
+          span: 10,
         }}
         label="First Name"
       >
@@ -109,10 +115,10 @@ const CreateForm = props => {
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
-          span: 7,
+          span: 10,
         }}
         label="Last Name"
       >
@@ -129,30 +135,10 @@ const CreateForm = props => {
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
-          span: 15,
-        }}
-        label="Email Address"
-      >
-        {form.getFieldDecorator('EmailAddress', {
-          rules: [
-            {
-              required: true,
-              message: 'This field is required.',
-              min: 1,
-            },
-          ],
-        })(<Input placeholder="apfernandez2@up.edu.ph" />)}
-      </FormItem>
-
-      <FormItem
-        labelCol={{
-          span: 5,
-        }}
-        wrapperCol={{
-          span: 15,
+          span: 10,
         }}
         label="Phone Number"
       >
@@ -169,10 +155,30 @@ const CreateForm = props => {
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
-          span: 15,
+          span: 12,
+        }}
+        label="Email Address"
+      >
+        {form.getFieldDecorator('EmailAddress', {
+          rules: [
+            {
+              required: true,
+              message: 'This field is required.',
+              min: 1,
+            },
+          ],
+        })(<Input placeholder="apfernandez2@up.edu.ph" />)}
+      </FormItem>
+
+      <FormItem
+        labelCol={{
+          span: 7,
+        }}
+        wrapperCol={{
+          span: 12,
         }}
         label="Address"
       >
@@ -189,10 +195,10 @@ const CreateForm = props => {
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
-          span: 10,
+          span: 12,
         }}
         label="City/Province"
       >
@@ -204,9 +210,14 @@ const CreateForm = props => {
               min: 1,
             },
           ],
-        })(<select placeholder="Enter City/Province">
-            <option>Los Banos, Laguna</option>
-            </select>)}
+        })(<Dropdown overlay={<Menu>
+          <Menu.Item>-Select City/Province-</Menu.Item>
+          <Menu.Item>Los Banos, Laguna</Menu.Item>
+          </Menu>}>
+          <Button>
+            Status <Icon type="down" />
+          </Button>
+        </Dropdown>)}
       </FormItem>
     </Modal>
   );

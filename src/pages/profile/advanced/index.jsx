@@ -2,6 +2,9 @@ import {
   Badge,
   Button,
   Card,
+  Row,
+  Col,
+  Tag,
   Statistic,
   Descriptions,
   Divider,
@@ -69,18 +72,13 @@ const action = (
     }}
   </RouteContext.Consumer>
 );
-// const extra = (
-  // <div className={styles.moreInfo}>
-  //   <Statistic title="状态" value="待审批" />
-  //   <Statistic title="订单金额" value={568.08} prefix="¥" />
-  // </div>
-// );
+
 const description = (
   <RouteContext.Consumer>
     {({ isMobile }) => (
       <Descriptions className={styles.headerList} size="small" column={1}>
+        <Descriptions.Item><Tag color={"geekblue"}>ACTIVE</Tag></Descriptions.Item>
         <Descriptions.Item label="Emp. ID">111-111-101</Descriptions.Item>
-        <Descriptions.Item>ACTIVE</Descriptions.Item>
         <Descriptions.Item>Brgy. Tadlac, Los Banos, Laguna</Descriptions.Item>
         <Descriptions.Item>apfernandez2@up.edu.ph</Descriptions.Item>
         <Descriptions.Item>+63 916 123 9563</Descriptions.Item>
@@ -208,7 +206,7 @@ const columns = [
 class Advanced extends Component {
   state = {
     operationKey: 'tab1',
-    tabActiveKey: 'detail',
+    tabActiveKey: 'Attendance',
   };
 
   componentDidMount() {
@@ -233,29 +231,13 @@ class Advanced extends Component {
   render() {
     const { operationKey, tabActiveKey } = this.state;
     const { profileAndadvanced, loading } = this.props;
-    const { advancedOperation1, advancedOperation2, advancedOperation3 } = profileAndadvanced;
+    const { advancedOperation1 } = profileAndadvanced;
     const contentList = {
       tab1: (
         <Table
           pagination={false}
           loading={loading}
           dataSource={advancedOperation1}
-          columns={columns}
-        />
-      ),
-      tab2: (
-        <Table
-          pagination={false}
-          loading={loading}
-          dataSource={advancedOperation2}
-          // columns={columns}
-        />
-      ),
-      tab3: (
-        <Table
-          pagination={false}
-          loading={loading}
-          dataSource={advancedOperation3}
           columns={columns}
         />
       ),
@@ -266,7 +248,6 @@ class Advanced extends Component {
         extra={action}
         className={styles.pageHeader}
         content={description}
-        // extraContent={extra}
         tabActiveKey={tabActiveKey}
         onTabChange={this.onTabChange}
       >

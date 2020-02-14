@@ -1,4 +1,4 @@
-import { Form, Input, Modal } from 'antd';
+import { Form, Input, Modal, Dropdown, Menu, Icon, Button } from 'antd';
 import React from 'react';
 
 const FormItem = Form.Item;
@@ -19,17 +19,17 @@ const CreateForm = props => {
       destroyOnClose
       title="New Part"
       visible={modalVisible}
-      width={700}
+      width={500}
       onOk={okHandle}
       onCancel={() => handleModalVisible()}
     >
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
-          span: 5,
+          span: 7,
         }}
         label="Photos"
       >
@@ -46,10 +46,10 @@ const CreateForm = props => {
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
-          span: 7,
+          span: 10,
         }}
         label="Part Name"
       >
@@ -66,10 +66,10 @@ const CreateForm = props => {
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
-          span: 7,
+          span: 10,
         }}
         label="Status"
       >
@@ -81,18 +81,23 @@ const CreateForm = props => {
               min: 1,
             },
           ],
-        })(<select placeholder="Enter Status">
-            <option>ACTIVE</option>
-            <option>INACTIVE</option>
-            </select>)}
+        })(<Dropdown overlay={<Menu>
+          <Menu.item>-Select Status-</Menu.item>
+          <Menu.item>Active</Menu.item>
+          <Menu.item>Inactive</Menu.item>
+        </Menu>}>
+          <Button> Status
+            <Icon type="down"/>
+          </Button>
+        </Dropdown>)}
       </FormItem>
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
-          span: 7,
+          span: 5,
         }}
         label="Quantity"
       >
@@ -109,10 +114,10 @@ const CreateForm = props => {
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
-          span: 7,
+          span: 5,
         }}
         label="Max"
       >
@@ -129,10 +134,10 @@ const CreateForm = props => {
 
       <FormItem
         labelCol={{
-          span: 5,
+          span: 7,
         }}
         wrapperCol={{
-          span: 15,
+          span: 10,
         }}
         label="Documents"
       >

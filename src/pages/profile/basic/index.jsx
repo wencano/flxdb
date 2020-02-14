@@ -1,4 +1,4 @@
-import { Badge, Card, Descriptions, Divider, Table } from 'antd';
+import { Badge, Card, Descriptions, Divider, Table, Tag } from 'antd';
 import React, { Component } from 'react';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import { connect } from 'dva';
@@ -83,131 +83,68 @@ class Basic extends Component {
       return obj;
     };
 
+    const description = (
+      <Descriptions column={1}>
+        <Descriptions.Item><Tag color={'geekblue'}>ACTIVE</Tag></Descriptions.Item>
+        <Descriptions.Item>100/100</Descriptions.Item>
+      </Descriptions>
+    );
+
     const goodsColumns = [
-      {
-        title: '商品编号',
-        dataIndex: 'id',
-        key: 'id',
-        render: (text, row, index) => {
-          if (index < basicGoods.length) {
-            return <a href="">{text}</a>;
-          }
+      // {
+      //   title: 'Part Name',
+      //   dataIndex: 'id',
+      //   key: 'id',
+      //   render: (text, row, index) => {
+      //     if (index < basicGoods.length) {
+      //       return <a href="">{text}</a>;
+      //     }
 
-          return {
-            children: (
-              <span
-                style={{
-                  fontWeight: 600,
-                }}
-              >
-                总计
-              </span>
-            ),
-            props: {
-              colSpan: 4,
-            },
-          };
-        },
-      },
+      //     return {
+      //       children: (
+      //         <span
+      //           style={{
+      //             fontWeight: 600,
+      //           }}
+      //         >
+      //           总计
+      //         </span>
+      //       ),
+      //       props: {
+      //         colSpan: 4,
+      //       },
+      //     };
+      //   },
+      // },
       {
-        title: '商品名称',
-        dataIndex: 'name',
-        key: 'name',
+        title: 'Date',
+        dataIndex: 'date',
+        key: 'date',
         render: renderContent,
       },
       {
-        title: '商品条码',
-        dataIndex: 'barcode',
-        key: 'barcode',
+        title: 'Transaction',
+        dataIndex: 'transaction',
+        key: 'transaction',
         render: renderContent,
       },
       {
-        title: '单价',
-        dataIndex: 'price',
-        key: 'price',
-        align: 'right',
+        title: 'By',
+        dataIndex: 'by',
+        key: 'by',
         render: renderContent,
       },
       {
-        title: '数量（件）',
-        dataIndex: 'num',
-        key: 'num',
-        align: 'right',
-        render: (text, row, index) => {
-          if (index < basicGoods.length) {
-            return text;
-          }
-
-          return (
-            <span
-              style={{
-                fontWeight: 600,
-              }}
-            >
-              {text}
-            </span>
-          );
-        },
-      },
-      {
-        title: '金额',
-        dataIndex: 'amount',
-        key: 'amount',
-        align: 'right',
-        render: (text, row, index) => {
-          if (index < basicGoods.length) {
-            return text;
-          }
-
-          return (
-            <span
-              style={{
-                fontWeight: 600,
-              }}
-            >
-              {text}
-            </span>
-          );
-        },
+        title: 'Quantity',
+        dataIndex: 'quantity',
+        key: 'quantity',
+        render: renderContent,
       },
     ];
     return (
-      <PageHeaderWrapper>
-        <Card bordered={false}>
-          <Descriptions
-            title="退款申请"
-            style={{
-              marginBottom: 32,
-            }}
-          >
-            <Descriptions.Item label="取货单号">1000000000</Descriptions.Item>
-            <Descriptions.Item label="状态">已取货</Descriptions.Item>
-            <Descriptions.Item label="销售单号">1234123421</Descriptions.Item>
-            <Descriptions.Item label="子订单">3214321432</Descriptions.Item>
-          </Descriptions>
-          <Divider
-            style={{
-              marginBottom: 32,
-            }}
-          />
-          <Descriptions
-            title="用户信息"
-            style={{
-              marginBottom: 32,
-            }}
-          >
-            <Descriptions.Item label="用户姓名">付小小</Descriptions.Item>
-            <Descriptions.Item label="联系电话">18100000000</Descriptions.Item>
-            <Descriptions.Item label="常用快递">菜鸟仓储</Descriptions.Item>
-            <Descriptions.Item label="取货地址">浙江省杭州市西湖区万塘路18号</Descriptions.Item>
-            <Descriptions.Item label="备注">无</Descriptions.Item>
-          </Descriptions>
-          <Divider
-            style={{
-              marginBottom: 32,
-            }}
-          />
-          <div className={styles.title}>退货商品</div>
+      <PageHeaderWrapper title= "C-0001" content={description}>
+        <Card bordered={true}>
+          <div className={styles.title}>Specification</div>
           <Table
             style={{
               marginBottom: 24,
@@ -216,17 +153,18 @@ class Basic extends Component {
             loading={loading}
             dataSource={goodsData}
             columns={goodsColumns}
-            rowKey="id"
           />
-          <div className={styles.title}>退货进度</div>
+        </Card>
+        <Card bordered={true}>
+          <div className={styles.title}>Transaction History</div>
           <Table
             style={{
-              marginBottom: 16,
+              marginBottom: 24,
             }}
             pagination={false}
             loading={loading}
-            dataSource={basicProgress}
-            columns={progressColumns}
+            dataSource={goodsData}
+            columns={goodsColumns}
           />
         </Card>
       </PageHeaderWrapper>

@@ -1,15 +1,14 @@
-import { Button, Card, Col, Dropdown, Form, Icon, Input, Menu, Row, Select, message } from 'antd';
-import React, { Component, Fragment } from 'react';
+import { Button, Card, Col, Dropdown, Form, Icon, Input, Menu, Row, message } from 'antd';
+import React, { Component } from 'react';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import { connect } from 'dva';
-import moment from 'moment';
 import CreateForm from './components/CreateForm';
 import StandardTable from './components/StandardTable';
 import UpdateForm from './components/UpdateForm';
 import styles from './style.less';
 
 const FormItem = Form.Item;
-const { Option } = Select;
+// const { Option } = Select;
 
 const getValue = obj =>
   Object.keys(obj)
@@ -34,6 +33,20 @@ class TableList extends Component {
     {
       title: 'Employee ID',
       dataIndex: 'EmployeeID',
+      key: 'EmployeeID',
+      render: (text, row, index) => {
+        return {
+          children: (
+            <span
+              style={{
+                fontWeight: 600,
+              }}
+            >
+              <a href="profile/advanced">{text}</a>
+            </span>
+          ),
+        };
+      },
     },
     {
       title: 'Full Name',
@@ -186,9 +199,9 @@ class TableList extends Component {
     const { getFieldDecorator } = form;
     const status = (
       <Menu selectedKeys={[]}>
-        <Menu.Item>Status 1</Menu.Item>
-        <Menu.Item>Status 2</Menu.Item>
-        <Menu.Item>Status 3</Menu.Item>
+        <Menu.Item>-Select Status-</Menu.Item>
+        <Menu.Item>Active</Menu.Item>
+        <Menu.Item>Inactive</Menu.Item>
       </Menu>
     );
     return (
@@ -200,13 +213,13 @@ class TableList extends Component {
             xl: 48,
           }}
         >
-          <Col md={8} sm={15}>
+          <Col md={7} sm={12}>
             <FormItem label="Search">
               {getFieldDecorator('FullName')(<Input placeholder="Employee ID or Name" />)}
             </FormItem>
           </Col>
 
-          <Col md={8} sm={15}>
+          <Col md={6} sm={5}>
             <FormItem>
             {getFieldDecorator('Status')(
                 <Dropdown overlay={status}>
@@ -217,7 +230,7 @@ class TableList extends Component {
             </FormItem>
           </Col>
 
-          <Col md={8} sm={24}>
+          <Col md={8} sm={15}>
             <span className={styles.submitButtons}>
               <Button type="primary" htmlType="submit">
                 Search
@@ -285,6 +298,7 @@ class TableList extends Component {
               columns={this.columns}
               onSelectRow={this.handleSelectRows}
               onChange={this.handleStandardTableChange}
+              rowKey="EmployeeID"
             />
           </div>
         </Card>
