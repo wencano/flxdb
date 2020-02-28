@@ -1,12 +1,14 @@
 import React from 'react';
+import { GridContent, PageHeaderWrapper, RouteContext } from '@ant-design/pro-layout';
 import styles from './roles.css';
 import TableBasic from './TableBasic';
 
 export default function() {
   return (
-    <div className={styles.normal}>
-      <TableBasic />
-      <h1>Page roles test</h1>
-    </div>
+    <PageHeaderWrapper>
+      <div className={styles.normal}>
+        <TableBasic />
+      </div>
+    </PageHeaderWrapper>
   );
 }

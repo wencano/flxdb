@@ -1,10 +1,13 @@
 import React from 'react';
+import { GridContent, PageHeaderWrapper, RouteContext } from '@ant-design/pro-layout';
 import styles from './list.css';
 
 export default function() {
   return (
-    <div className={styles.normal}>
-      <h1>Page models</h1>
-    </div>
+    <PageHeaderWrapper title="Manage Components">
+      <div className={styles.normal}>
+        
+      </div>
+    </PageHeaderWrapper>
   );
 }

@@ -252,12 +252,22 @@ export default {
                   icon: "user",
                   path: "/accounts",
                   component: './accounts/accounts.jsx',
+                  exact: true
                 },
                 {
                   name: 'Roles and Permissions',
                   icon: 'smile',
                   path: '/accounts/roles',
                   component: './accounts/roles/roles.js',
+                  exact: true
+                },
+                {
+                  name: 'advanced',
+                  icon: 'smile',
+                  path: '/accounts/advanced',
+                  component: './profile/advanced',
+                  hideInMenu: true,
+                  exact: true
                 }
               ]
             },
@@ -349,19 +359,14 @@ export default {
               path: '/profile',
               name: 'profile',
               icon: 'profile',
+              hideInMenu: true,
               routes: [
                 {
                   name: 'basic',
                   icon: 'smile',
                   path: '/profile/basic',
                   component: './profile/basic',
-                },
-                {
-                  name: 'advanced',
-                  icon: 'smile',
-                  path: '/profile/advanced',
-                  component: './profile/advanced',
-                },
+                }
               ],
             },
             // {

@@ -6,6 +6,7 @@ import CreateForm from './components/CreateForm';
 import StandardTable from './components/StandardTable';
 import UpdateForm from './components/UpdateForm';
 import styles from './style.less';
+import { Link } from 'umi';
 
 const FormItem = Form.Item;
 // const { Option } = Select;
@@ -42,7 +43,7 @@ class TableList extends Component {
                 fontWeight: 600,
               }}
             >
-              <a href="profile/advanced">{text}</a>
+              <Link to="/accounts/advanced">{text}</Link>
             </span>
           ),
         };

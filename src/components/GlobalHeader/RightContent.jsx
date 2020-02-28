@@ -23,7 +23,7 @@ const GlobalHeaderRight = props => {
         placeholder={formatMessage({
           id: 'component.globalHeader.search',
         })}
-        defaultValue="umi ui"
+        defaultValue="fujifilm lx"
         dataSource={[
           formatMessage({
             id: 'component.globalHeader.search.example1',

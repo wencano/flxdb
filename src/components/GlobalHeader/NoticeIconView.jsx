@@ -136,7 +136,7 @@ class GlobalHeaderRight extends Component {
           })}
           showViewMore
         />
-        <NoticeIcon.Tab
+        {/* <NoticeIcon.Tab
           tabKey="message"
           count={unreadMsg.message}
           list={noticeData.message}
@@ -159,7 +159,7 @@ class GlobalHeaderRight extends Component {
           count={unreadMsg.event}
           list={noticeData.event}
           showViewMore
-        />
+        /> */}
       </NoticeIcon>
     );
   }
