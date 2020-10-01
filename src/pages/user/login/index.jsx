@@ -28,6 +28,7 @@ class Login extends Component {
 
   handleSubmit = (err, values) => {
     const { type } = this.state;
+    console.log("LOGIN SUBMIT ", values);
 
     if (!err) {
       const { dispatch } = this.props;
@@ -80,6 +81,9 @@ class Login extends Component {
     const { userAndlogin, submitting } = this.props;
     const { status, type: loginType } = userAndlogin;
     const { type, autoLogin } = this.state;
+
+    let test = '';
+
     return (
       <div className={styles.main}>
         <LoginComponents

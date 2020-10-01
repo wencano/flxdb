@@ -31,3 +31,8 @@ export function setAuthority(authority) {
 
   reloadAuthorized();
 }
+
+export function getStrapiAuth() {
+  let auth = localStorage.getItem('strapi-auth');
+  return JSON.parse(auth);
+}

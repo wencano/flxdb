@@ -48,4 +48,28 @@ export default {
   'menu.editor.flow': 'Flow Editor',
   'menu.editor.mind': 'Mind Editor',
   'menu.editor.koni': 'Koni Editor',
+  
+  'menu.Orders': 'Orders',
+  'menu.Orders.All': 'All Orders',
+  'menu.Orders.WIP': 'WIP',
+  'menu.Orders.New Orders': 'New Orders',
+  'menu.Orders.Complete': 'Complete',
+  'menu.Reports': 'Reports',
+  
+  'menu.Parts': 'Parts',
+  'menu.Parts.Inventory': 'Inventory',
+  'menu.Parts.PO': 'Purchase Orders',
+  'menu.Parts.Vendors': 'Vendors',
+  'menu.Parts.Categories': 'Categories',
+  'menu.Parts.Locations': 'Locations',
+  'menu.Models': 'Models',
+  'menu.Models.All Models': 'All Models',
+  'menu.Models.Components': 'Components',
+  'menu.Models.Processes': 'Processes',
+  'menu.Models.Reports': 'Reports',
+  'menu.Accounts': 'Accounts',
+  'menu.Accounts.Users': 'Users',
+  'menu.Accounts.Roles and Permissions': 'Roles and Permissions',
+  'menu.Accounts.advanced': 'Advanced',
+  
 };

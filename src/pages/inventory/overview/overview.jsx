@@ -10,6 +10,7 @@ import styles from './style.less';
 
 const FormItem = Form.Item;
 const { Option } = Select;
+const API_URL = 'http://localhost:1337';
 
 const getValue = obj =>
   Object.keys(obj)
@@ -31,44 +32,34 @@ class TableList extends Component {
   };
 
   columns = [
+    // {
+    //   title: 'Image',
+    //   key: "ProductImage",
+    //   dataIndex: 'ProductImage',
+    //   render: image => <Image src={API_URL + image[0].formats.small.url}></Image>
+    // },
     {
-      title: 'Image',
-      key: "Image",
-      dataIndex: 'Image',
-      render: Image => (
-        <span>
-            <Tag color={'geekblue'}>
-              {Image}
-            </Tag>
-        </span>
-      )
+      title: 'ID',
+      dataIndex: 'id',
+      render: text => <a href={"../profile/basic/"+text}>{text}</a>
     },
     {
-      title: 'Part ID',
-      dataIndex: 'PartID',
-      render: text => <a href="../profile/basic">{text}</a>
+      title: 'Name',
+      dataIndex: 'Name',
     },
     {
       title: 'Quantity',
-      dataIndex: 'Quantity',
-    },
-    {
-      title: 'Max',
-      dataIndex: 'Max',
-    },
-    {
-      title: 'Percent',
-      dataIndex: 'Percent',
-    },
-    {
-      title: 'Date Added',
-      dataIndex: 'DateAdded',
-    },
-    {
-      title: 'Date Updated',
-      dataIndex: 'DateUpdated',
+      dataIndex: 'Qty',
     },
   ];
+
+  componentWillMount() {
+    const { dispatch } = this.props;
+
+    dispatch({
+      type: 'listoverview/getItems',
+    });
+  };
 
   componentDidMount() {}
 
@@ -112,6 +103,7 @@ class TableList extends Component {
   handleMenuClick = e => {
     const { dispatch } = this.props;
     const { selectedRows } = this.state;
+
     if (!selectedRows) return;
 
     switch (e.key) {
@@ -119,7 +111,7 @@ class TableList extends Component {
         dispatch({
           type: 'listoverview/remove',
           payload: {
-            key: selectedRows.map(row => row.key),
+            id: selectedRows.map(row => row.id),
           },
           callback: () => {
             this.setState({
@@ -279,6 +271,9 @@ class TableList extends Component {
       handleUpdateModalVisible: this.handleUpdateModalVisible,
       handleUpdate: this.handleUpdate,
     };
+
+    console.log("DATA IN RENDER: ", data);
+
     return (
       <PageHeaderWrapper>
         <Card bordered={false}>

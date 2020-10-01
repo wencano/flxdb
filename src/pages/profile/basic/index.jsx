@@ -1,8 +1,10 @@
-import { Badge, Card, Descriptions, Divider, Table, Tag } from 'antd';
+import { Badge, Card, Descriptions, Divider, Table, Tag, Image } from 'antd';
 import React, { Component } from 'react';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import { connect } from 'dva';
 import styles from './style.less';
+
+const API_URL = 'http://localhost:1337'
 
 const progressColumns = [
   {
@@ -41,13 +43,15 @@ const progressColumns = [
 
 @connect(({ profileAndbasic, loading }) => ({
   profileAndbasic,
-  loading: loading.effects['profileAndbasic/fetchBasic'],
+  loading: loading.effects['profileAndbasic/fetch'],
 }))
 class Basic extends Component {
-  componentDidMount() {
+
+  componentWillMount() {
     const { dispatch } = this.props;
     dispatch({
-      type: 'profileAndbasic/fetchBasic',
+      type: 'profileAndbasic/fetch',
+      id: this.props.match.params.id
     });
   }
 
@@ -55,20 +59,25 @@ class Basic extends Component {
     const { profileAndbasic, loading } = this.props;
     const { basicGoods, basicProgress } = profileAndbasic;
     let goodsData = [];
+    
+    console.log(API_URL + basicGoods.ProductImage[0].url)
 
-    if (basicGoods.length) {
-      let num = 0;
-      let amount = 0;
-      basicGoods.forEach(item => {
-        num += Number(item.num);
-        amount += Number(item.amount);
-      });
-      goodsData = basicGoods.concat({
-        id: '总计',
-        num,
-        amount,
-      });
-    }
+
+    console.log("BASIC RENDER: ", basicGoods);
+
+    // if (basicGoods && basicGoods.length) {
+    //   let num = 0;
+    //   let amount = 0;
+    //   basicGoods.forEach(item => {
+    //     num += Number(item.num);
+    //     amount += Number(item.amount);
+    //   });
+    //   goodsData = basicGoods.concat({
+    //     id: '总计',
+    //     num,
+    //     amount,
+    //   });
+    // }
 
     const renderContent = (value, row, index) => {
       const obj = {
@@ -85,65 +94,15 @@ class Basic extends Component {
 
     const description = (
       <Descriptions column={1}>
-        <Descriptions.Item><Tag color={'geekblue'}>ACTIVE</Tag></Descriptions.Item>
-        <Descriptions.Item>100/100</Descriptions.Item>
+        <Image src={API_URL + basicGoods.ProductImage[0].url}/>
+        <Descriptions.Item colSpan={1}>Quantity: {basicGoods.Qty}</Descriptions.Item>
+        {/* <Descriptions.Item colSpan={1}>{basicGoods.Qty}</Descriptions.Item> */}
       </Descriptions>
     );
 
-    const goodsColumns = [
-      // {
-      //   title: 'Part Name',
-      //   dataIndex: 'id',
-      //   key: 'id',
-      //   render: (text, row, index) => {
-      //     if (index < basicGoods.length) {
-      //       return <a href="">{text}</a>;
-      //     }
-
-      //     return {
-      //       children: (
-      //         <span
-      //           style={{
-      //             fontWeight: 600,
-      //           }}
-      //         >
-      //           总计
-      //         </span>
-      //       ),
-      //       props: {
-      //         colSpan: 4,
-      //       },
-      //     };
-      //   },
-      // },
-      {
-        title: 'Date',
-        dataIndex: 'date',
-        key: 'date',
-        render: renderContent,
-      },
-      {
-        title: 'Transaction',
-        dataIndex: 'transaction',
-        key: 'transaction',
-        render: renderContent,
-      },
-      {
-        title: 'By',
-        dataIndex: 'by',
-        key: 'by',
-        render: renderContent,
-      },
-      {
-        title: 'Quantity',
-        dataIndex: 'quantity',
-        key: 'quantity',
-        render: renderContent,
-      },
-    ];
     return (
-      <PageHeaderWrapper title= "C-0001" content={description}>
-        <Card bordered={true}>
+      <PageHeaderWrapper title= {basicGoods.Name} content={description}>
+        {/* <Card bordered={true}>
           <div className={styles.title}>Specification</div>
           <Table
             style={{
@@ -154,8 +113,8 @@ class Basic extends Component {
             dataSource={goodsData}
             columns={goodsColumns}
           />
-        </Card>
-        <Card bordered={true}>
+        </Card> */}
+        {/* <Card bordered={true}>
           <div className={styles.title}>Transaction History</div>
           <Table
             style={{
@@ -166,7 +125,7 @@ class Basic extends Component {
             dataSource={goodsData}
             columns={goodsColumns}
           />
-        </Card>
+        </Card> */}
       </PageHeaderWrapper>
     );
   }

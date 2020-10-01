@@ -364,7 +364,7 @@ export default {
                 {
                   name: 'basic',
                   icon: 'smile',
-                  path: '/profile/basic',
+                  path: '/profile/basic/:id',
                   component: './profile/basic',
                 }
               ],

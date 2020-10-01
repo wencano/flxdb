@@ -1,33 +1,26 @@
-import { addRule, queryRule, removeRule, updateRule } from './service';
+import { addRule, queryRule, removeRule, updateRule, queryProducts, removeProduct } from './service';
 
 const Model = {
   namespace: 'listoverview',
   state: {
     data: {
-      list: [
-        {
-          Image: 'Photo Here',
-          PartID: 'C-0001',
-          Quantity: '100',
-          Max: '100',
-          Percent: '100%',
-          DateAdded: '01/13/2020',
-          DateUpdated: '01/20/2020',
-        },
-        {
-          Image: 'Photo Here',
-          PartID: 'C-0002',
-          Quantity: '3',
-          Max: '100',
-          Percent: '3%',
-          DateAdded: '01/13/2020',
-          DateUpdated: '01/30/2020',
-        },
-      ],
+      list: [],
       pagination: {},
     },
   },
   effects: {
+    *getItems(_, {call, put}) {
+      const response = yield call(queryProducts);
+      const api_payload = {
+        list: response,
+        pagination: {}
+      };
+      yield put({
+        type: 'save',
+        payload: api_payload,
+      });
+    },
+
     *fetch({ payload }, { call, put }) {
       const response = yield call(queryRule, payload);
       yield put({
@@ -46,12 +39,13 @@ const Model = {
     },
 
     *remove({ payload, callback }, { call, put }) {
-      const response = yield call(removeRule, payload);
+      const deleted = yield call(removeProduct, payload);
+      const response = yield call(queryProducts) // retrieve updated list of products
       yield put({
         type: 'save',
         payload: response,
       });
-      if (callback) callback();
+      callback();
     },
 
     *update({ payload, callback }, { call, put }) {

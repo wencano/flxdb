@@ -21,6 +21,7 @@ const getValue = obj =>
   listAndtableList1,
   loading: loading.models.listAndtableList1,
 }))
+
 class TableList extends Component {
   state = {
     modalVisible: false,
@@ -32,9 +33,9 @@ class TableList extends Component {
 
   columns = [
     {
-      title: 'Employee ID',
-      dataIndex: 'EmployeeID',
-      key: 'EmployeeID',
+      title: 'ID',
+      dataIndex: 'id',
+      key: 'id',
       render: (text, row, index) => {
         return {
           children: (
@@ -43,25 +44,38 @@ class TableList extends Component {
                 fontWeight: 600,
               }}
             >
-              <Link to="/accounts/advanced">{text}</Link>
+              {/* <Link to="/accounts/advanced">{text}</Link> */}
+              {text}
             </span>
-          ),
+          )
         };
       },
     },
     {
-      title: 'Full Name',
-      dataIndex: 'FullName',
+      title: 'Name',
+      dataIndex: 'Name',
     },
     {
-      title: 'Status',
-      dataIndex: 'Status',
+      title: 'Debut',
+      dataIndex: 'Debut',
     },
     {
-      title: 'Date Added',
-      dataIndex: 'DateAdded',
+      title: 'Genre',
+      dataIndex: 'Genre',
+    },
+    {
+      title: 'Notes',
+      dataIndex: 'Notes',
     },
   ];
+
+  componentWillMount() {
+    const { dispatch } = this.props;
+
+    dispatch({
+      type: 'listAndtableList1/getItems',
+    });
+  };
 
   componentDidMount() {}
 
@@ -272,6 +286,7 @@ class TableList extends Component {
       handleUpdateModalVisible: this.handleUpdateModalVisible,
       handleUpdate: this.handleUpdate,
     };
+
     return (
       <PageHeaderWrapper>
         <Card bordered={false}>
@@ -299,7 +314,7 @@ class TableList extends Component {
               columns={this.columns}
               onSelectRow={this.handleSelectRows}
               onChange={this.handleStandardTableChange}
-              rowKey="EmployeeID"
+              rowKey="id"
             />
           </div>
         </Card>

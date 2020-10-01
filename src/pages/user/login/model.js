@@ -1,6 +1,6 @@
 import { routerRedux } from 'dva/router';
-import { fakeAccountLogin, getFakeCaptcha } from './service';
-import { getPageQuery, setAuthority } from './utils/utils';
+import { strapiLogin, getFakeCaptcha, fakeAccountLogin } from './service';
+import { getPageQuery, setAuthority, setStrapiAuth } from './utils/utils';
 
 const Model = {
   namespace: 'userAndlogin',
@@ -9,13 +9,18 @@ const Model = {
   },
   effects: {
     *login({ payload }, { call, put }) {
-      const response = yield call(fakeAccountLogin, payload);
+      
+      let strapi_login = {identifier: payload.userName, password: payload.password};
+      const response = yield call(strapiLogin, strapi_login);
+
+      console.log("STRAPI LOGIN ", strapi_login, response );
+
       yield put({
         type: 'changeLoginStatus',
         payload: response,
       }); // Login successfully
 
-      if (response.status === 'ok') {
+      if (response.user) {
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
         let { redirect } = params;
@@ -45,7 +50,10 @@ const Model = {
   },
   reducers: {
     changeLoginStatus(state, { payload }) {
-      setAuthority(payload.currentAuthority);
+      if( payload && payload.user ) {
+        setAuthority(payload.user.role.type);
+        setStrapiAuth(payload);
+      }
       return { ...state, status: payload.status, type: payload.type };
     },
   },

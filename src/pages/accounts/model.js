@@ -1,45 +1,29 @@
-import { addRule, queryRule, removeRule, updateRule } from './service';
+import { addRule, queryRule, removeRule, updateRule, queryBands } from './service';
 
 const Model = {
   namespace: 'listAndtableList1',
   state: {
     data: {
-      list: [
-        {
-          EmployeeID: '111-111-101',
-          FullName: 'Abigail Fernandez',
-          Status: 'Active',
-          DateAdded: '01/13/2020',
-        },
-        {
-          EmployeeID: '111-111-102',
-          FullName: 'Abigail Fernandez',
-          Status: 'Active',
-          DateAdded: '01/13/2020',
-        },
-        {
-          EmployeeID: '111-111-103',
-          FullName: 'Abigail Fernandez',
-          Status: 'Active',
-          DateAdded: '01/13/2020',
-        },
-        {
-          EmployeeID: '111-111-104',
-          FullName: 'Abigail Fernandez',
-          Status: 'Active',
-          DateAdded: '01/13/2020',
-        },
-        {
-          EmployeeID: '111-111-105',
-          FullName: 'Abigail Fernandez',
-          Status: 'Active',
-          DateAdded: '01/13/2020',
-        },
-      ],
+      list: [],
       pagination: {},
     },
   },
   effects: {
+    *getItems(_, {call, put}) {
+
+      const response = yield call(queryBands);
+
+      const api_payload = {
+        list: response,
+        pagination: {}
+      };
+
+      yield put({
+        type: 'save',
+        payload: api_payload,
+      });
+    },
+
     *fetch({ payload }, { call, put }) {
       const response = yield call(queryRule, payload);
       yield put({
